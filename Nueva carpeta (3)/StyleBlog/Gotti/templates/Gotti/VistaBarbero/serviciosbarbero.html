@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gotti Barbería - Servicios</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Gotti/css/barbero/servicios.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'indexbarbero' %}">Inicio</a></li>
+                <li><a href="{% url 'contactobarbero' %}">Contacto</a></li>
+                <li><a href="{% url 'serviciosbarbero' %}">Servicios</a></li>
+                <li><a href="{% url 'productosbarbero' %}">Productos</a></li>
+                <li><a href="{% url 'horas_reservadas' %}">Horas Reservadas</a></li>
+                <li><a href="{% url 'inicioColaborador' %}">Blog</a></li>
+            </ul>
+            <a href="{% url 'carritobarbero' %}"><img src="{% static 'Gotti/img/vista/carrito.png' %}" alt="Carrito" class="cart-icon"></a>
+        </nav>
+    </header>
+    
+    <section class="logo-section">
+        <img src="{% static 'Gotti/img/vista/logo.jpg' %}" alt="Logo Gotti" class="logo">
+    </section>
+
+    <section class="main-card">
+        <h1>Servicios</h1>
+        <p>En Barbería Gotti, ofrecemos servicios diseñados para satisfacer todas tus necesidades. Desde cortes de cabello clásicos hasta las últimas tendencias en barbería.</p>
+        <br>
+        <div>
+            <button onclick="window.location.href='{% url 'agregar_servicio' %}';" class="btn-primary">Agregar Servicio</button>
+        </div>
+
+        <section class="productos-section">
+            <div class="card-container">
+                {% for servicio in servicios %}
+                    <div class="card">
+                        <img src="{{ servicio.imagen.url }}" alt="{{ servicio.nombreServicio }}" class="product-image">
+                        <div class="card-content">
+                            <h3>{{ servicio.nombreServicio }}</h3>
+                            <p>Precio: ${{ servicio.precio|floatformat:0 }}</p>
+                            <p>{{ servicio.descripcion }}</p>
+                            <a href="{% url 'editar_servicio' servicio.idServicio %}" class="btn-action">Editar</a>
+                            <a href="{% url 'crear_horarios' servicio.idServicio %}" class="btn-action">Crear Horarios</a>
+                            <form action="{% url 'eliminar_servicio' servicio.idServicio %}" method="POST" class="form-eliminar">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-eliminar">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Desde 2024. Gotti © Todos los Derechos Reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+        </div>
+    </footer>
+</body>
+</html>

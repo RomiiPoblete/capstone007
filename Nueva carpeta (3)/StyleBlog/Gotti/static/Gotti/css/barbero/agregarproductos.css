@@ -1,0 +1,206 @@
+/* Reset básico */
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Organiza el contenido verticalmente */
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1; /* Hace que el contenido principal ocupe todo el espacio restante */
+}
+
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #aeaeaa;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Navbar */
+.header {
+    background-color: #1E1E1E;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Separa los elementos: menú a la izquierda, carrito a la derecha */
+    align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin-right: 30px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.cart-icon {
+    width: 40px;
+    margin-left: auto;
+}
+
+/* Logo Section */
+.logo-section {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.logo {
+    max-height: 300px;
+    width: auto;
+}
+
+/* Formulario en Card */
+.card.form-card {
+    background-color: white;
+    width: 90%; /* Ajusta el ancho al 90% del contenedor */
+    max-width: 600px; /* Limita el ancho máximo a 600px */
+    margin: 20px auto; /* Centra la card horizontalmente y agrega margen superior/inferior */
+    padding: 20px; /* Agrega espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    text-align: center; /* Centra el contenido textualmente */
+    color: black;
+    font-size: 18px;
+}
+
+/* Título de la Card */
+.card-title {
+    font-size: 24px;
+    color: black; /* Texto negro */
+    margin-bottom: 20px;
+}
+
+/* Estilo para los campos del formulario */
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 10px; /* Espaciado interno */
+    margin: 5px 0; /* Espaciado vertical */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    box-sizing: border-box; /* Incluir padding y border en el tamaño total */
+}
+
+/* Estilo para el campo de texto largo (textarea) */
+form textarea {
+    resize: vertical; /* Permitir solo redimensionar verticalmente */
+    height: 100px; /* Altura inicial */
+}
+
+/* Centrar etiquetas con los campos */
+form label {
+    display: flex; /* Usar Flexbox para alinear */
+    align-items: center; /* Alinear verticalmente */
+    margin-bottom: 10px; /* Espaciado inferior */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Letras en negrita */
+    color: #333; /* Color oscuro */
+}
+
+/* Formato del contenedor del campo */
+form .form-group {
+    display: flex;
+    align-items: center; /* Centrar etiquetas y campos verticalmente */
+    justify-content: space-between;
+    margin-bottom: 15px; /* Espaciado entre campos */
+}
+
+/* Ajustar etiquetas y campos */
+form .form-group label {
+    width: 30%; /* Ajustar ancho de las etiquetas */
+}
+
+form .form-group input,
+form .form-group textarea,
+form .form-group select {
+    width: 65%; /* Ajustar ancho de las casillas */
+}
+
+
+/* Botones */
+.button-group {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #000000;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #333333;
+}
+
+.btn-secondary {
+    background-color: #000000;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #777777;
+}
+
+
+/* Footer */
+.footer {
+    background-color: #1E1E1E;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-top: auto; /* Empuja el footer al final de la página */
+    font-size: 1.3em;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    margin: 0 10px;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}

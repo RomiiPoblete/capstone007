@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Blog</title>
+    {% load static %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Gotti/css/inicio.css' %}">
+</head>
+<body>
+    <header>
+        <h1 class="logo">StyleBlog</h1>
+
+        <nav>
+            <ul class="menus">
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
+            </ul>
+
+            <div class="user-menu">
+                <button onclick="window.location.href='{% url 'iniciarSesion' %}';">Iniciar Sesión</button>
+                <button onclick="window.location.href='{% url 'registrarse_como' %}';">Registrarse</button>
+            </div>
+        </nav>
+    </header>
+
+        <section class="registro-form-container">
+            <img src="{% static 'Gotti/img/inicio.png' %}" alt="Imagen de perfil" class="profile-image">
+            <form method="POST">
+                {% csrf_token %}
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required>
+            
+                <label for="correoElectronico">Correo Electrónico:</label>
+                <input type="email" id="correoElectronico" name="correoElectronico" required>
+            
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+            
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+            
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" required name="telefono">
+            
+                <label for="especialidad">Especialidad:</label>
+                <input type="text" id="especialidad" name="especialidad" required>
+            
+                <button type="submit">Enviar Solicitud</button>
+            </form>
+            
+        </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Mi Página. Todos los derechos reservados.</p>
+            <div class="social-media">
+                <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+                <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="X"></a>
+                <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'Gotti/js/script.js' %}"></script>
+</body>
+</html>

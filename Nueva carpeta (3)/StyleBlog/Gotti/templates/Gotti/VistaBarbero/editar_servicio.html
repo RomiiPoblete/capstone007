@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Servicio - Gotti Barbería</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Gotti/css/barbero/agregarproductos.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'indexbarbero' %}">Inicio</a></li>
+                <li><a href="{% url 'contactobarbero' %}">Contacto</a></li>
+                <li><a href="{% url 'serviciosbarbero' %}">Servicios</a></li>
+                <li><a href="{% url 'productosbarbero' %}">Productos</a></li>
+                <li><a href="{% url 'horas_reservadas' %}">Horas Reservadas</a></li>
+                <li><a href="{% url 'inicioColaborador' %}">Blog</a></li>
+            </ul>
+            <a href="{% url 'carritobarbero' %}"><img src="{% static 'Gotti/img/vista/carrito.png' %}" alt="Carrito" class="cart-icon"></a>
+        </nav>
+    </header>
+    
+    <section class="logo-section">
+        <img src="{% static 'Gotti/img/vista/logo.jpg' %}" alt="Logo Gotti" class="logo">
+    </section>
+
+    <!-- Formulario dentro de una card -->
+    <div class="card form-card">
+        <h2 class="card-title">Editar Servicio</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Campo de Nombre del Servicio -->
+            <div class="form-group">
+                <label for="nombreServicio">Nombre del Servicio:</label>
+                <input type="text" id="nombreServicio" name="nombreServicio" value="{{ servicio.nombreServicio }}" required>
+            </div>
+            
+            <!-- Campo de Descripción -->
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" required>{{ servicio.descripcion }}</textarea>
+            </div>
+            
+            <!-- Campo de Precio -->
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" min="0" value="{{ servicio.precio }}" required>
+            </div>
+            
+            <!-- Campo de Imagen -->
+            <div class="form-group">
+                <label for="imagen">Imagen:</label>
+                <input type="file" id="imagen" name="imagen">
+            </div>
+            
+            <!-- Botones de Acción -->
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <a href="{% url 'serviciosbarbero' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <p>Desde 2024. Gotti © Todos los Derechos Reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="X"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+        </div>
+    </footer>
+</body>
+</html>

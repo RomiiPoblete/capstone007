@@ -1,0 +1,444 @@
+/* Reset básico */
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Organiza el contenido verticalmente */
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1; /* Hace que el contenido principal ocupe todo el espacio restante */
+}
+
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #aeaeae;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Navbar */
+.header {
+    background-color: #1E1E1E;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Separa los elementos: menú a la izquierda, carrito a la derecha */
+    align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin-right: 30px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.cart-icon {
+    width: 40px;
+    margin-left: auto;
+}
+
+/* Logo Section */
+.logo-section {
+    text-align: center;
+    
+}
+
+/* Logo Section */
+.logo-section {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.logo {
+    max-height: 300px;
+    width: auto;
+}
+
+/* Content Section */
+.content-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.content-item {
+    position: relative;
+    width: 100%;
+}
+
+.content-item img {
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay h2 {
+    margin: 10px 0;
+    
+}
+
+.overlay button {
+    padding: 10px 20px;
+    border: none;
+
+    background-color: #131111;
+    background-color: transparent;
+    color: #ffffff;
+    border: solid 1px #f9f7d573;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.overlay button:hover {
+background-color:#f9f7d53b ;
+}
+
+
+/* Contacto Section */
+.contact-section {
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.contact-img {
+    width: 100%;
+    height: auto;
+    opacity: 0.7;
+}
+
+.contact-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.contact-info h2, .contact-info p {
+    margin: 5px 0;
+}
+
+.contact-info hr {
+    border: 1px solid #fff;
+    width: 10%;
+    margin: 10px auto;
+}
+
+/* Reservar Button */
+.card-content button {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card-content button:hover {
+    background-color: #555;
+}
+
+/* datos section */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.reservation-section {
+    display: flex;
+    background-color:#fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.reservation-form {
+    padding: 20px;
+}
+
+.reservation-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #000000;
+}
+
+.reservation-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+.reservation-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.reserve-button, .back-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.reserve-button:hover, .back-button:hover {
+    background-color: #555;
+}
+
+.barber-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #000;
+}
+
+.barber-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.barber-name {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Carrito de Compras */
+.carrito {
+    background-color: #f1f1f1;
+    width: 80%;
+    margin: 0 auto;
+    padding: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrito h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+    color: #000;
+}
+
+th {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #000;
+}
+
+/* Botones */
+.eliminar {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.continuar, .pagar {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+}
+
+.continuar {
+    background-color: #1A1A1A;
+}
+
+.pagar {
+    background-color: #5cb85c;
+}
+
+.total-final {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 30%;
+    color: #000;
+}
+
+/* Footer */
+.footer {
+    background-color: #1E1E1E;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-top: auto; /* Empuja el footer al final de la página */
+    font-size: 1.3em;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    margin: 0 10px;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+/* nuevo estilo info */
+/* Estilo para la tarjeta */
+.card {
+    position: relative;
+    width: 300px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    transition: transform 0.3s ease !important;
+    margin: 20px !important;
+}
+
+
+/* Contenedor de la imagen */
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de desplazamiento hacia arriba de la imagen */
+.card:hover .image-container img {
+    transform: translateY(-20%); /* Mueve la imagen hacia arriba */
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+    position: relative;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.829); /* Fondo oscuro semitransparente */
+    color: white;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+/* Mostrar el contenido cuando se pasa el mouse sobre la tarjeta */
+.card:hover .card-content {
+    transform: translateY(0);
+}
+
+/* Contenedor de todas las tarjetas */
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas */
+    margin-top: 20px;
+}
+
+/* Estilo para la sección de servicios */
+.servicios-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    color: #000; /* Cambia el color del texto a negro */
+}
+
+.servicios-section h2 {
+    color: #000; /* Color negro para el título */
+}
+
+

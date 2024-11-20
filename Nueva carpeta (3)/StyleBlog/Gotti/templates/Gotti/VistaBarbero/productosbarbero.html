@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gotti Barbería - Productos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Gotti/css/barbero/producto.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'indexbarbero' %}">Inicio</a></li>
+                <li><a href="{% url 'contactobarbero' %}">Contacto</a></li>
+                <li><a href="{% url 'serviciosbarbero' %}">Servicios</a></li>
+                <li><a href="{% url 'productosbarbero' %}">Productos</a></li>
+                <li><a href="{% url 'horas_reservadas' %}">Horas Reservadas</a></li>
+                <li><a href="{% url 'inicioColaborador' %}">Blog</a></li>
+            </ul>
+            <a href="{% url 'carritobarbero' %}"><img src="{% static 'Gotti/img/vista/carrito.png' %}" alt="Carrito" class="cart-icon"></a>
+        </nav>
+    </header>
+    
+    <section class="logo-section">
+        <img src="{% static 'Gotti/img/vista/logo.jpg' %}" alt="Logo Gotti" class="logo">
+    </section>
+
+    <!-- Card Principal -->
+    <section class="main-card">
+        <h1>Productos</h1>
+        <p>Encuentra los mejores productos para el cuidado personal en Gotti Barbería. Desde ceras y champús hasta herramientas de barbería.</p>
+        <div class="btn-container">
+            <a href="{% url 'agregar_producto' %}" class="btn-agregar">Agregar Producto</a>
+        </div>
+        
+        <!-- Productos Section -->
+        <section class="productos-section">
+            <div class="card-container">
+                {% for producto in productos %}
+                    <div class="card">
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombreProducto }}" class="product-image">
+                        <div class="card-content">
+                            <h3>{{ producto.nombreProducto }}</h3>
+                            <p>Precio: ${{ producto.precio|floatformat:0  }}</p>
+                            <p>Stock: {{ producto.stock }}</p>
+                            <a href="{% url 'editar_producto' producto.idProducto %}" class="btn-editar">Editar</a>
+                            <form action="{% url 'eliminar_producto' producto.idProducto %}" method="POST" class="form-eliminar">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-eliminar">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </section>
+
+    <footer class="footer">
+        <p>Desde 2024. Gotti © Todos los Derechos Reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+        </div>
+    </footer>
+</body>
+</html>
