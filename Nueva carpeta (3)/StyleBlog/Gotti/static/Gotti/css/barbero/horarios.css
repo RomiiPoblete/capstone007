@@ -1,0 +1,224 @@
+/* Reset básico */
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Organiza el contenido verticalmente */
+}
+
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: hsl(0, 0%, 20%);
+    background-color: #aeaeae;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Header (navbar y logo) */
+.header {
+    background-color: #1E1E1E;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Separa los elementos: menú a la izquierda, carrito a la derecha */
+    align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin-right: 30px; /* Espaciado entre los elementos */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.cart-icon {
+    width: 40px;
+    margin-left: auto;
+}
+
+.logo-section {
+    text-align: center;
+    background-color: white;
+    padding: 20px 0;
+}
+
+.logo {
+    max-height: 300px;
+    width: auto;
+}
+
+/* Estilo para la card */
+.card {
+    background-color: white;
+    width: 90%; /* Ajusta el ancho al 90% del contenedor */
+    max-width: 600px; /* Limita el ancho máximo a 600px */
+    margin: 20px auto; /* Centra la card horizontalmente y agrega margen superior/inferior */
+    padding: 20px; /* Agrega espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    text-align: center; /* Centra el contenido textualmente */
+}
+
+/* Estilo del título dentro de la card */
+.card-title {
+    color: black; /* Título negro */
+    font-size: 24px; /* Tamaño del título */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilo del subtítulo dentro de la card */
+.card-subtitle {
+    color: black; /* Subtítulos negros */
+    font-size: 16px; /* Tamaño del subtítulo */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Centrar todos los inputs y selects dentro de la card */
+.card input,
+.card select {
+    width: 80%; /* Reduce el ancho al 80% para centrar */
+    margin: 0 auto 15px auto; /* Centra horizontalmente y agrega margen inferior */
+    display: block; /* Asegura que se comporten como elementos de bloque */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #a4a4a4b1; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 19px;
+}
+
+p, label {
+    font-size: 19px; /* Aumenta el tamaño del contenido del párrafo */
+}
+
+/* Botones */
+.card button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 19px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button[type="submit"] {
+    background-color: #000000; /* Botón principal oscuro */
+    color: white; /* Texto blanco */
+}
+
+.card button:hover {
+    background-color: #555; /* Oscurece al pasar el cursor */
+}
+
+.card button[type="button"] {
+    background-color: #000000; /* Botones secundarios */
+    color: white;
+}
+
+.card button[type="button"]:hover {
+    background-color: #000000; /* Oscurece al pasar el cursor */
+    color: white;
+}
+
+/* Mensajes emergentes */
+.messages {
+    position: fixed;
+    top: 50%; /* Centrado verticalmente */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste para centrar */
+    z-index: 1000; /* Por encima de otros elementos */
+    width: auto; /* Ajusta el ancho automáticamente */
+    max-width: 90%; /* Limita el ancho máximo */
+    text-align: center; /* Centra el texto */
+}
+
+.message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 15px 25px; /* Más espaciado para destacar */
+    margin-bottom: 10px;
+    font-size: 18px; /* Fuente un poco más grande */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+    text-align: center;
+    animation: fadeOut 3s forwards; /* Animación para desaparecer */
+}
+
+/* Tipos de mensajes */
+.message.success {
+    background-color: #d4edda; /* Fondo verde claro */
+    color: #155724; /* Texto verde oscuro */
+    border: 1px solid #c3e6cb; /* Borde verde claro */
+}
+
+.message.warning {
+    background-color: #fff3cd; /* Fondo amarillo claro */
+    color: #856404; /* Texto amarillo oscuro */
+    border: 1px solid #ffeeba; /* Borde amarillo claro */
+}
+
+.message.error {
+    background-color: #f8d7da; /* Fondo rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+    border: 1px solid #f5c6cb; /* Borde rojo claro */
+}
+
+/* Animación de desaparición */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Clase adicional para desaparición suave */
+.message.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Transición suave */
+}
+
+/* Footer */
+.footer {
+    background-color: #1E1E1E;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-top: auto; /* Empuja el footer al final de la página */
+    font-size: 1.3em;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    margin: 0 10px;
+}

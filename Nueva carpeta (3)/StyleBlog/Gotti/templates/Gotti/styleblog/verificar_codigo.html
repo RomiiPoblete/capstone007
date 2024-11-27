@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Blog</title>
+    {% load static %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Gotti\css\inicioblog.css' %}">
+    
+</head>
+<body>
+    <header>
+        <h1 class="logo">StyleBlog</h1>
+
+        <nav>
+            <ul class="menus">
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a href="{% url 'contacto'%}">Contacto</a></li>
+            </ul>
+
+            <div class="user-menu">
+                <button onclick="window.location.href='{% url 'iniciarSesion' %}';" >Iniciar Sesión</button>
+                <button onclick="window.location.href='{% url 'registrarse_como' %}';">Registrarse</button>
+            </div>
+        </nav>
+    </header>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="registro-form-container">
+        <h2>Verifica tu código</h2>
+        <p>Ingresa el código que enviamos a tu correo electrónico.</p>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="codigo">Código de verificación</label>
+            <input type="text" id="codigo" name="codigo" class="inputc" placeholder="Código" required>
+            <div class="button-groups">
+                <button type="button" class="buttonx" onclick="window.location.href='{% url 'iniciarSesion' %}';">Cancelar</button>
+                <button type="submit" class="buttonx2">Verificar</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Mi Página. Todos los derechos reservados.</p>
+            <div class="social-media">
+                <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+                <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="X"></a>
+                <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

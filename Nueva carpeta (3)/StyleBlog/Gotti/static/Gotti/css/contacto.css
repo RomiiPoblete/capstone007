@@ -1,0 +1,249 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #e7e2dd8c;
+}
+
+header {
+    background-color: #1E1E1E;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    margin: 10;
+    font-family: 'Abril Fatface';
+    font-size: 4em;
+}
+
+.logo {
+    background: linear-gradient(180deg, #FFF3F3 0%, #999292 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -o-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav {
+    background-color: #343434;
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+nav ul li {
+    margin: 0 25px;
+}
+
+nav ul li a {
+    font-family: 'Istok Web', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.71px;
+    text-align: center;
+    background: linear-gradient(180deg, #FFF3F3 0%, #5b5a5a 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -o-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #999;
+}
+
+.menus {
+    margin-left: 250px;
+}
+
+.user-menu {
+    display: flex;
+}
+
+.user-menu button {
+    background-color: #545050;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 20px;
+    font-size: 15px;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+
+/* Card styles */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-header h2 {
+    font-family: 'Baloo Tamma', sans-serif;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.card-body p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+.card-body .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem; /* Aumenta la separación entre los campos */
+}
+
+.card-body .form-group div {
+    flex: 1;
+    min-width: 45%;
+}
+
+.card-body .form-group div label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-body .form-group div input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-body .form-group-wide {
+    width: 100%;
+    text-align: left;
+}
+
+.card-body .form-group-wide label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-body .form-group-wide textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+    background-color: #1E1E1E;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #333;
+}
+
+.contactotexto {
+    font-family: 'Baloo Chettan 2', sans-serif;
+    font-size: 14px;
+    line-height: 1.5; /* Aumenta el espaciado entre líneas */
+    color: #333131;
+    margin-top: 10px; /* Espacio superior */
+    text-align: left;
+    max-width: 620px;
+}
+
+
+footer {
+    background-color: #2e2e2e;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+}
+
+footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer .social-media a img {
+    width: 25px;
+    margin: 0 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+footer .social-media a img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul.menus {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .user-menu {
+        margin-top: 1rem;
+        align-self: flex-end;
+    }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gotti Barbería - Horarios Disponibles</title>
+    <link rel="stylesheet" href="{% static 'Gotti/css/cliente/horariosCliente.css' %}">
+</head>
+<body>
+    <!-- Cabecera -->
+    <header class="header">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'indexCliente' %}">Inicio</a></li>
+                <li><a href="{% url 'contactoCliente' %}">Contacto</a></li>
+                <li><a href="{% url 'servicio' %}">Servicios</a></li>
+                <li><a href="{% url 'productosCliente' %}">Productos</a></li>
+                <li><a href="{% url 'inicioCliente' %}">Blog</a></li>
+            </ul>
+            <a href="{% url 'carritoCliente' %}"><img src="{% static 'Gotti/img/vista/carrito.png' %}" alt="Carrito" class="cart-icon"></a>
+        </nav>
+    </header>
+
+    <!-- Logo -->
+    <section class="logo-section">
+        <img src="{% static 'Gotti/img/vista/logo.jpg' %}" alt="Logo Gotti" class="logo">
+    </section>
+
+    <section class="horarios-section">
+        <h2>Horario disponible para {{ servicio.nombreServicio }}</h2>
+        <div class="horarios-container">
+            {% for bloque in bloques_disponibles %}
+            <div class="bloque-horario">
+                <p><strong>Fecha:</strong> {{ bloque.fecha }}</p>
+                <p><strong>Hora:</strong> {{ bloque.horarioinicio|time:"H:i" }} - {{ bloque.horariofin|time:"H:i" }}</p>
+                <form action="{% url 'agendar_horario' bloque.idbloque %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-agendar">Agendar</button>
+                </form>
+            </div>
+            {% empty %}
+            <p>No hay horarios disponibles para este servicio.</p>
+            {% endfor %}
+        </div>
+    </section>
+    
+
+
+
+    <!-- Mensajes de error o éxito -->
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>Desde 2024. Gotti © Todos los Derechos Reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+        </div>
+    </footer>
+</body>
+</html>

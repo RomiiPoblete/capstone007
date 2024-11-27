@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gotti Barbería - Pedidos de Clientes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Gotti/css/barbero/carro.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'indexbarbero' %}">Inicio</a></li>
+                <li><a href="{% url 'contactobarbero' %}">Contacto</a></li>
+                <li><a href="{% url 'serviciosbarbero' %}">Servicios</a></li>
+                <li><a href="{% url 'productosbarbero' %}">Productos</a></li>
+                <li><a href="{% url 'horas_reservadas' %}">Horas Reservadas</a></li>
+                <li><a href="{% url 'inicioColaborador' %}">Blog</a></li>
+            </ul>
+            <a href="{% url 'carritobarbero' %}">
+                <img src="{% static 'Gotti/img/vista/carrito.png' %}" alt="Carrito" class="cart-icon">
+            </a>
+        </nav>
+    </header>
+    
+    <section class="logo-section">
+        <img src="{% static 'Gotti/img/vista/logo.jpg' %}" alt="Logo Gotti" class="logo">
+    </section>
+
+    <div class="card">
+        <section class="carrito-admin">
+            <h2>Pedidos de clientes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre del Cliente</th>
+                        <th>Correo Electrónico</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                        {% for producto in pedido.productos %}
+                        <tr>
+                            {% if forloop.first %}
+                                <td rowspan="{{ pedido.productos|length }}">{{ pedido.cliente.nombre }}</td>
+                                <td rowspan="{{ pedido.productos|length }}">{{ pedido.cliente.correoElectronico }}</td>
+                            {% endif %}
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.cantidad }}</td>
+                            <td>${{ producto.precio_unitario|floatformat:0 }}</td>
+                            <td>${{ producto.subtotal|floatformat:0 }}</td>
+                            {% if forloop.first %}
+                                <td rowspan="{{ pedido.productos|length }}">
+                                    {% if not pedido.confirmado %}
+                                        <a href="{% url 'confirmar_pedido' pedido.carrito_id %}">
+                                            <button class="confirmar">Confirmar Pedido</button>
+                                        </a>
+                                        <a href="{% url 'cancelar_pedido' pedido.carrito_id %}">
+                                            <button class="cancelar">Cancelar Pedido</button>
+                                        </a>
+                                    {% else %}
+                                        <span style="font-weight: bold; color: green;">Pedido Confirmado</span>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="6" style="text-align: right; font-weight: bold;">Total del Pedido: ${{ pedido.total|floatformat:0 }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="7">No hay pedidos actualmente.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <p>Desde 2024. Gotti © Todos los Derechos Reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="X"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gotti Barbería - Horas Reservadas</title>
+    {% load static %}
+    <!-- Carga del CSS -->
+    <link rel="stylesheet" href="{% static 'Gotti/css/barbero/horariosServicios.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'indexbarbero' %}">Inicio</a></li>
+                <li><a href="{% url 'contactobarbero' %}">Contacto</a></li>
+                <li><a href="{% url 'serviciosbarbero' %}">Servicios</a></li>
+                <li><a href="{% url 'productosbarbero' %}">Productos</a></li>
+                <li><a href="{% url 'horas_reservadas' %}">Horas Reservadas</a></li>
+                <li><a href="{% url 'inicioColaborador' %}">Blog</a></li>
+            </ul>
+            <a href="{% url 'carritobarbero' %}"><img src="{% static 'Gotti/img/vista/carrito.png' %}" alt="Carrito" class="cart-icon"></a>
+        </nav>
+    </header>
+
+    <section class="logo-section">
+        <img src="{% static 'Gotti/img/vista/logo.jpg' %}" alt="Logo Gotti" class="logo"><br><br>
+    </section>
+
+    <div class="horarios-container">
+        <!-- Card para Horas para Hoy -->
+        <div class="card">
+            <h2 class="card-title">Horas para Hoy</h2>
+            <table class="horarios-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Término</th>
+                        <th>Servicio</th>
+                        <th>Disponibilidad</th>
+                        <th>Cliente</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for horario in horas_hoy %}
+                    <tr>
+                        <td>{{ horario.fecha }}</td>
+                        <td>{{ horario.horarioinicio|time:"H:i" }}</td>
+                        <td>{{ horario.horariofin|time:"H:i" }}</td>
+                        <td>{{ horario.servicio.nombreServicio }}</td>
+                        <td>{{ horario.disponibilidad }}</td>
+                        <td>{% if horario.cliente %}{{ horario.cliente.nombre }}{% else %}N/A{% endif %}</td>
+                        <td>
+                            {% if horario.disponibilidad == "OCUPADO" %}
+                                <a href="{% url 'aceptar_hora' horario.idbloque %}" class="btn btn-secondary">Aceptar</a>
+                                <a href="{% url 'cancelar_hora' horario.idbloque %}" class="btn btn-danger">Cancelar</a>
+                            {% elif horario.disponibilidad == "CONFIRMADO" %}
+                                Confirmada
+                            {% else %}
+                                Disponible
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="7" style="text-align: center;">No hay horarios para hoy</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Paginación -->
+            <div class="pagination">
+                {% if horas_hoy.has_previous %}
+                    <a href="?page_hoy={{ horas_hoy.previous_page_number }}">Anterior</a>
+                {% endif %}
+                <span>Página {{ horas_hoy.number }} de {{ horas_hoy.paginator.num_pages }}</span>
+                {% if horas_hoy.has_next %}
+                    <a href="?page_hoy={{ horas_hoy.next_page_number }}">Siguiente</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Card para Todos los Horarios -->
+        <div class="card">
+            <h2 class="card-title">Todos los Horarios</h2>
+            <table class="horarios-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Término</th>
+                        <th>Servicio</th>
+                        <th>Disponibilidad</th>
+                        <th>Cliente</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for horario in horas_otros_dias %}
+                    <tr>
+                        <td>{{ horario.fecha }}</td>
+                        <td>{{ horario.horarioinicio|time:"H:i" }}</td>
+                        <td>{{ horario.horariofin|time:"H:i" }}</td>
+                        <td>{{ horario.servicio.nombreServicio }}</td>
+                        <td>{{ horario.disponibilidad }}</td>
+                        <td>{% if horario.cliente %}{{ horario.cliente.nombre }}{% else %}N/A{% endif %}</td>
+                        <td>
+                            {% if horario.disponibilidad == "OCUPADO" %}
+                                <a href="{% url 'aceptar_hora' horario.idbloque %}" class="btn btn-secondary">Aceptar</a>
+                                <a href="{% url 'cancelar_hora' horario.idbloque %}" class="btn btn-danger">Cancelar</a>
+                            {% elif horario.disponibilidad == "CONFIRMADO" %}
+                                Confirmada
+                            {% else %}
+                                Disponible
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="7" style="text-align: center;">No hay horarios futuros disponibles</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Paginación -->
+            <div class="pagination">
+                {% if horas_otros_dias.has_previous %}
+                    <a href="?page_futuras={{ horas_otros_dias.previous_page_number }}">Anterior</a>
+                {% endif %}
+                <span>Página {{ horas_otros_dias.number }} de {{ horas_otros_dias.paginator.num_pages }}</span>
+                {% if horas_otros_dias.has_next %}
+                    <a href="?page_futuras={{ horas_otros_dias.next_page_number }}">Siguiente</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Card para Horas Pasadas -->
+        <div class="card">
+            <h2 class="card-title">Horas Pasadas</h2>
+            <table class="horarios-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Término</th>
+                        <th>Servicio</th>
+                        <th>Disponibilidad</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for horario in horas_pasadas %}
+                    <tr>
+                        <td>{{ horario.fecha }}</td>
+                        <td>{{ horario.horarioinicio|time:"H:i" }}</td>
+                        <td>{{ horario.horariofin|time:"H:i" }}</td>
+                        <td>{{ horario.servicio.nombreServicio }}</td>
+                        <td>{{ horario.disponibilidad }}</td>
+                        <td>{% if horario.cliente %}{{ horario.cliente.nombre }}{% else %}N/A{% endif %}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="6" style="text-align: center;">No hay horarios pasados</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Paginación -->
+            <div class="pagination">
+                {% if horas_pasadas.has_previous %}
+                    <a href="?page_pasadas={{ horas_pasadas.previous_page_number }}">Anterior</a>
+                {% endif %}
+                <span>Página {{ horas_pasadas.number }} de {{ horas_pasadas.paginator.num_pages }}</span>
+                {% if horas_pasadas.has_next %}
+                    <a href="?page_pasadas={{ horas_pasadas.next_page_number }}">Siguiente</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Desde 2024. Gotti © Todos los Derechos Reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/gotti_barber/"><img src="{% static 'Gotti/img/vista/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/x.png' %}" alt="X"></a>
+            <a href="#"><img src="{% static 'Gotti/img/vista/facebook.png' %}" alt="Facebook"></a><br>
+        </div>
+    </footer>
+</body>
+</html>
