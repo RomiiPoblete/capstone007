@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-t7-(vtwbb8$np(!ghej1s93yv3h(ha+*3kkt5ln5(9o37l%lb0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['MatiaSins.pythonanywhere.com']
+
 
 
 # Application definition
@@ -79,14 +80,13 @@ WSGI_APPLICATION = 'StyleBlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'styleblog',
-        'USER': 'root',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',  # O la IP del servidor si no es local
-        'PORT': '3306',  # El puerto por defecto de MySQL
+        'NAME': 'MatiaSins$styleblog',  # Cambiar por el nombre de tu base de datos en PythonAnywhere
+        'USER': 'MatiaSins',  # Tu nombre de usuario de PythonAnywhere
+        'PASSWORD': 'admin',  # Contraseña de MySQL en PythonAnywhere
+        'HOST': 'MatiaSins.mysql.pythonanywhere-services.com',  # Host proporcionado por PythonAnywhere
+        'PORT': '3306',  # Puerto estándar para MySQL
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -123,7 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
@@ -135,8 +137,6 @@ LOGIN_URL = '/iniciarCliente/'
 
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
